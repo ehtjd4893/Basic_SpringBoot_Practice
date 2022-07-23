@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.TodoEntity;
 import com.example.demo.model.TodoModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +20,15 @@ public class TodoDTO {
     this.id = entity.getId();
     this.title = entity.getTitle();
     this.done = entity.isDone();
+  }
+
+  public TodoDTO(final TodoEntity entity) {
+    this.id = entity.getId();
+    this.title = entity.getTitle();
+    this.done = entity.isDone();
+  }
+
+  public static TodoEntity toEntity(final TodoDTO dto) {
+    return TodoEntity.builder().id(dto.getId()).title(dto.getTitle()).done(dto.isDone()).build();
   }
 }
